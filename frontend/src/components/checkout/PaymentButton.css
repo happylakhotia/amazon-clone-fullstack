@@ -1,0 +1,62 @@
+.payment-button-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: white;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  padding: var(--space-md);
+}
+
+.pb-secure {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--font-xs);
+  color: var(--text-secondary);
+}
+
+.pb-payment-method {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--gray-50);
+}
+
+.pb-pm-title {
+  font-size: var(--font-sm);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.pb-pm-sub {
+  font-size: var(--font-xs);
+  color: var(--text-secondary);
+}
+
+.pb-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: var(--radius-full) !important;
+  font-weight: 700;
+}
+
+.pb-terms {
+  font-size: var(--font-xs);
+  color: var(--text-secondary);
+  text-align: center;
+  line-height: 1.5;
+}
+
+.pb-link {
+  color: var(--amazon-blue);
+  cursor: pointer;
+}
+.pb-link:hover {
+  text-decoration: underline;
+  color: var(--amazon-orange);
+}
