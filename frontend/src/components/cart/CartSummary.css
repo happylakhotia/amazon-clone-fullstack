@@ -1,0 +1,74 @@
+.cart-summary {
+  background: white;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  position: sticky;
+  top: calc(var(--navbar-height) + var(--subnav-height) + var(--space-md));
+}
+
+.cs-promo {
+  background: #f0fff4;
+  padding: 10px var(--space-md);
+  font-size: var(--font-sm);
+  color: var(--amazon-green);
+  border-bottom: 1px solid #c3e6cb;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.cs-promo-check {
+  color: var(--amazon-green);
+  font-weight: 700;
+}
+
+.cs-body {
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cs-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--font-sm);
+  color: var(--text-primary);
+}
+
+.cs-subtotal {
+  font-size: var(--font-base);
+}
+.cs-subtotal-price {
+  font-weight: 700;
+}
+
+.cs-free {
+  color: var(--amazon-green);
+  font-weight: 700;
+}
+
+.cs-divider {
+  border-top: 1px solid var(--border);
+  margin: 4px 0;
+}
+
+.cs-total {
+  font-size: var(--font-lg);
+  font-weight: 700;
+}
+.cs-total-price {
+  color: var(--amazon-red);
+  font-size: var(--font-xl);
+}
+
+.cs-checkout-btn {
+  width: calc(100% - 2 * var(--space-md));
+  margin: 0 var(--space-md) var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: var(--radius-full) !important;
+}

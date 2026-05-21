@@ -1,0 +1,139 @@
+.cart-item {
+  display: grid;
+  grid-template-columns: 120px 1fr auto;
+  gap: var(--space-md);
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid var(--border);
+  animation: fadeIn 0.25s ease;
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+/* Image */
+.ci-image-link {
+  display: block;
+}
+.ci-image-wrap {
+  width: 120px;
+  height: 120px;
+  background: var(--gray-50);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.ci-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 8px;
+}
+
+/* Details */
+.ci-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ci-name {
+  font-size: var(--font-sm);
+  color: var(--amazon-blue);
+  font-weight: 400;
+  line-height: 1.4;
+  text-decoration: none;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.ci-name:hover {
+  text-decoration: underline;
+  color: var(--amazon-orange);
+}
+
+.ci-sold-by {
+  font-size: var(--font-xs);
+  color: var(--text-secondary);
+}
+
+.ci-stock {
+  font-size: var(--font-xs);
+  color: var(--amazon-green);
+  font-weight: 700;
+}
+
+/* Actions row */
+.ci-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.ci-action-btns {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ci-action-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--font-xs);
+  color: var(--amazon-blue);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  transition: color var(--transition);
+}
+.ci-action-btn:hover {
+  color: var(--amazon-orange);
+  text-decoration: underline;
+}
+
+.ci-separator {
+  color: var(--border);
+  font-size: 0.7rem;
+}
+
+/* Price */
+.ci-price-col {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.ci-price {
+  font-size: var(--font-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.ci-unit-price {
+  font-size: var(--font-xs);
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .cart-item {
+    grid-template-columns: 80px 1fr;
+  }
+  .ci-image-wrap {
+    width: 80px;
+    height: 80px;
+  }
+  .ci-price-col {
+    grid-column: 1 / -1;
+    text-align: left;
+    align-items: flex-start;
+  }
+}
