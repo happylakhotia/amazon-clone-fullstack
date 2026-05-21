@@ -1,0 +1,209 @@
+.product-card {
+  background: white;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow var(--transition), transform 0.2s;
+  box-shadow: var(--shadow-card);
+  position: relative;
+  height: 100%;
+}
+
+.product-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.pc-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Badge */
+.pc-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 2;
+}
+
+/* Wishlist */
+.pc-wishlist {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 2;
+  background: white;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray-400);
+  box-shadow: var(--shadow-sm);
+  transition: color var(--transition), transform 0.2s;
+  cursor: pointer;
+  border: none;
+}
+.pc-wishlist:hover {
+  color: #e74c3c;
+  transform: scale(1.15);
+}
+.pc-wishlist--active {
+  color: #e74c3c;
+}
+
+/* Image */
+.pc-image-wrap {
+  width: 100%;
+  padding-top: 100%;
+  position: relative;
+  background: var(--gray-50);
+  overflow: hidden;
+}
+.pc-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 12px;
+  transition: transform 0.3s ease;
+}
+.product-card:hover .pc-image {
+  transform: scale(1.05);
+}
+
+/* Body */
+.pc-body {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.pc-name {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  line-height: 1.4;
+  height: 2.8em; /* Exactly 2 lines of text */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color var(--transition);
+}
+.pc-link:hover .pc-name {
+  color: var(--amazon-orange);
+}
+
+/* Stars */
+.pc-stars {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin: 2px 0;
+}
+.star-filled {
+  color: var(--amazon-orange);
+}
+.star-empty {
+  color: var(--gray-300);
+}
+.pc-review-count {
+  font-size: 0.85rem;
+  color: var(--amazon-blue);
+  margin-left: 4px;
+  font-weight: 500;
+}
+
+/* Price */
+.pc-price-row {
+  margin: 4px 0;
+  min-height: 48px; /* Strict minimum height to prevent list price/discount from altering card heights */
+  display: flex;
+  align-items: center;
+}
+.pc-body .price-main {
+  font-size: 1.35rem; /* Standout pricing */
+  font-weight: 700;
+  color: var(--amazon-red);
+}
+.pc-price-meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 1px;
+}
+.pc-body .price-original {
+  font-size: 0.85rem;
+}
+.pc-body .price-discount {
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+/* Stock */
+.pc-stock {
+  font-size: 0.85rem;
+  color: var(--amazon-green);
+  font-weight: 500;
+  margin-top: auto; /* Pushes stock to the bottom of the flex card body */
+}
+.pc-stock--low {
+  color: var(--amazon-red);
+  font-weight: 700;
+}
+
+/* Shipping */
+.pc-shipping {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.3;
+  margin-bottom: 2px;
+}
+
+/* Add to Cart button */
+.pc-add-cart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 14px 14px;
+  padding: 10px;
+  background: linear-gradient(to bottom, #f7dfa5, #f0c14b);
+  border: 1px solid #a88734;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background var(--transition), transform 0.1s ease, box-shadow var(--transition);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+.pc-add-cart:hover:not(:disabled) {
+  background: linear-gradient(to bottom, #f5d078, #eeb933);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.pc-add-cart:active:not(:disabled) {
+  transform: scale(0.98);
+}
+.pc-add-cart--added {
+  background: linear-gradient(to bottom, #c8f7c5, #a8e6a3);
+  border-color: #5a9e57;
+  color: #1a5c18;
+}
+.pc-add-cart:disabled {
+  background: var(--gray-200);
+  border-color: var(--gray-300);
+  color: var(--gray-500);
+  cursor: not-allowed;
+}
