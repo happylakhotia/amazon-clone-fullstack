@@ -1,0 +1,60 @@
+/* Spinner */
+.spinner {
+  border: 3px solid var(--gray-200);
+  border-top-color: var(--amazon-orange);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+}
+
+/* Page Loader */
+.page-loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: var(--space-md);
+}
+.page-loader-text {
+  color: var(--text-secondary);
+  font-size: var(--font-sm);
+}
+
+/* Skeleton Card */
+.skeleton-card {
+  background: white;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+.skeleton-image {
+  width: 100%;
+  padding-top: 100%;
+}
+.skeleton-body {
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.skeleton-title {
+  height: 14px;
+  width: 90%;
+}
+.skeleton-title.short {
+  width: 60%;
+}
+.skeleton-stars {
+  height: 12px;
+  width: 40%;
+}
+.skeleton-price {
+  height: 18px;
+  width: 35%;
+}
+.skeleton-btn {
+  height: 32px;
+  width: 100%;
+  margin-top: 4px;
+}

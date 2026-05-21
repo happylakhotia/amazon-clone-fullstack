@@ -1,0 +1,47 @@
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.input-label {
+  font-size: var(--font-sm);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.input-required {
+  color: var(--amazon-red);
+  margin-left: 2px;
+}
+
+.input-field {
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-sm);
+  color: var(--text-primary);
+  background: white;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+  height: 36px;
+}
+
+.input-field:focus {
+  border-color: #e77600;
+  box-shadow: 0 0 0 3px rgba(228, 118, 0, 0.3);
+}
+
+.input-field--error {
+  border-color: var(--amazon-red);
+}
+
+.input-field--error:focus {
+  border-color: var(--amazon-red);
+  box-shadow: 0 0 0 3px rgba(177, 39, 4, 0.3);
+}
+
+.input-error-msg {
+  font-size: var(--font-xs);
+  color: var(--amazon-red);
+}
