@@ -5,7 +5,6 @@ dotenv.config();
 
 const stripeSecretKey = process.env.STRIPE_PUBLISHABLE_KEY || "";
 
-// Initialize Stripe if secret key is present
 const stripe = stripeSecretKey.trim() !== ""
   ? new Stripe(stripeSecretKey)
   : null;

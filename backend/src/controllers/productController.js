@@ -1,9 +1,6 @@
 import * as productService from "../services/productService.js";
 
-/**
- * Get all products matching query and category
- * Route: GET /api/products
- */
+// Get all products matching query and category
 export const getProducts = async (req, res, next) => {
   try {
     const { q, cat } = req.query;
@@ -14,10 +11,7 @@ export const getProducts = async (req, res, next) => {
   }
 };
 
-/**
- * Get a specific product detail
- * Route: GET /api/products/:id
- */
+//Get a specific product detail
 export const getProductById = async (req, res, next) => {
   try {
     const { id } = req.params;

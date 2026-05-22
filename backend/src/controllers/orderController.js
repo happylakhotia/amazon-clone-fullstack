@@ -5,10 +5,7 @@ import * as emailService from "../services/emailService.js";
 import { calculateOrderTotals } from "../utils/calculateTotal.js";
 import { DEFAULT_USER_ID } from "../utils/constants.js";
 
-/**
- * Fetch list of a user's past orders
- * Route: GET /api/orders
- */
+//Fetch list of a user's past orders
 export const getOrders = async (req, res, next) => {
   try {
     const userId = req.headers["x-user-id"] || DEFAULT_USER_ID;
@@ -19,10 +16,7 @@ export const getOrders = async (req, res, next) => {
   }
 };
 
-/**
- * Place a new order based on current cart items
- * Route: POST /api/orders
- */
+//Place a new order based on current cart items
 export const createOrder = async (req, res, next) => {
   try {
     const userId = req.headers["x-user-id"] || DEFAULT_USER_ID;
@@ -31,14 +25,10 @@ export const createOrder = async (req, res, next) => {
     if (!address) {
       return res.status(400).json({ message: "Shipping address is required" });
     }
-
-    // Fetch user's cart items from db
     const cartItems = await cartService.getCart(userId);
     if (cartItems.length === 0) {
       return res.status(400).json({ message: "Shopping cart is empty" });
     }
-
-    // Dynamically calculate tax (GST) and shipping thresholds
     const totals = calculateOrderTotals(cartItems);
 
     // Save the order to DB
@@ -49,10 +39,8 @@ export const createOrder = async (req, res, next) => {
       totals,
     });
 
-    // Clear the cart on successful database checkout
     await cartService.clearCart(userId);
 
-    // Fetch user details and trigger email confirmation asynchronously (non-blocking)
     userService.getUserById(userId)
       .then((user) => {
         if (user) {

@@ -1,10 +1,7 @@
 import * as cartService from "../services/cartService.js";
 import { DEFAULT_USER_ID } from "../utils/constants.js";
 
-/**
- * Fetch a user's active shopping cart items
- * Route: GET /api/cart
- */
+/*Fetch a user's active shopping cart items*/
 export const getCart = async (req, res, next) => {
   try {
     const userId = req.headers["x-user-id"] || DEFAULT_USER_ID;
@@ -15,10 +12,7 @@ export const getCart = async (req, res, next) => {
   }
 };
 
-/**
- * Add a product to the cart
- * Route: POST /api/cart
- */
+/*Add a product to the cart*/
 export const addToCart = async (req, res, next) => {
   try {
     const userId = req.headers["x-user-id"] || DEFAULT_USER_ID;
@@ -33,10 +27,7 @@ export const addToCart = async (req, res, next) => {
   }
 };
 
-/**
- * Update the quantity of a cart item
- * Route: PUT /api/cart
- */
+/*Update the quantity of a cart item*/
 export const updateQuantity = async (req, res, next) => {
   try {
     const userId = req.headers["x-user-id"] || DEFAULT_USER_ID;
@@ -51,10 +42,7 @@ export const updateQuantity = async (req, res, next) => {
   }
 };
 
-/**
- * Remove an item from the cart
- * Route: DELETE /api/cart/:productId
- */
+/* Remove an item from the cart*/
 export const removeFromCart = async (req, res, next) => {
   try {
     const userId = req.headers["x-user-id"] || DEFAULT_USER_ID;
@@ -66,10 +54,7 @@ export const removeFromCart = async (req, res, next) => {
   }
 };
 
-/**
- * Empty the shopping cart
- * Route: DELETE /api/cart
- */
+/* Empty the shopping cart*/
 export const clearCart = async (req, res, next) => {
   try {
     const userId = req.headers["x-user-id"] || DEFAULT_USER_ID;

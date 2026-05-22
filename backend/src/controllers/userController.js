@@ -1,10 +1,7 @@
 import * as userService from "../services/userService.js";
 import { DEFAULT_USER_ID } from "../utils/constants.js";
 
-/**
- * Fetch default user profile details
- * Route: GET /api/users/profile
- */
+// Fetch default user profile details
 export const getProfile = async (req, res, next) => {
   try {
     const userId = req.headers["x-user-id"] || DEFAULT_USER_ID;
@@ -18,10 +15,7 @@ export const getProfile = async (req, res, next) => {
   }
 };
 
-/**
- * Update default user profile address and info
- * Route: PUT /api/users/profile
- */
+// Update default user profile address and info
 export const updateProfile = async (req, res, next) => {
   try {
     const userId = req.headers["x-user-id"] || DEFAULT_USER_ID;
@@ -32,10 +26,7 @@ export const updateProfile = async (req, res, next) => {
   }
 };
 
-/**
- * Register a new user profile
- * Route: POST /api/users/register
- */
+// Register a new user profile
 export const register = async (req, res, next) => {
   try {
     const { name, email, password } = req.body;
@@ -46,10 +37,7 @@ export const register = async (req, res, next) => {
   }
 };
 
-/**
- * Verify credentials and login user
- * Route: POST /api/users/login
- */
+// Verify credentials and login user
 export const login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
