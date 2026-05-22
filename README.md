@@ -7,13 +7,16 @@ A high-performance, feature-rich, and visually stunning e-commerce clone built u
 ## Key Features
 
 *   **Seamless User Experience:** Replicates the iconic Amazon branding with custom Vanilla CSS layout grids, sliders, product carousels, responsive sidebars, and fluid interactive feedback.
-*   **Authentication System:** Secure custom sign-in and sign-up flows, along with support for guest profiles for hassle-free browsing.
-*   **Interactive Cart & Wishlist:** Real-time updates for cart quantities, dynamic subtotal, tax and shipping calculations, and a dedicated wishlist to save items for later.
+*   **Product Listing Page:** Displays products in a responsive grid layout matching Amazon's design, featuring product cards (with Image, Name, Price, and Add to Cart buttons), instant search functionality by name, and category filtering.
+*   **Product Detail Page:** Features interactive image carousels displaying multiple product images, comprehensive descriptions and specifications tables, real-time price and stock availability status indicators, and both Add to Cart and direct Buy Now checkout paths.
+*   **Interactive Shopping Cart:** Supports full cart item visibility, real-time quantity modifiers, instant item deletion, dynamic subtotal, tax, and shipping calculations, and a dedicated wishlist to save items for later.
+*   **Order Placement & Checkout:** Provides a comprehensive checkout shipping address form, order summary review step, seamless e-commerce checkout placement, and an Amazon-style confirmation page displaying the formal Order ID.
+*   **User Authentication System:** Secure custom sign-in and sign-up flows, along with support for guest profiles for hassle-free browsing.
+*   **Stripe Payments Integration:** Full secure checkout experience using the Stripe API, handling live payment processing with automatic server-side validation.
 *   **Dynamic Pagination:** Custom offset-based pagination displaying 10 products per page with a smooth 80ms staggered card-loading animation.
 *   **Optimized Performance & Lazy Loading:** Implemented native image lazy loading to improve page load performance and reduce bandwidth usage across all product lists and image sliders.
-*   **Stripe Payments Integration:** Full secure checkout experience using the Stripe API, handling live payment processing with automatic server-side validation.
 *   **Order History & Tracking:** Post-purchase dashboards displaying past orders, order state tracking, estimated delivery dates, and precise item price snapshots.
-*   **Automated Email Invoices:** Relies on a transactional mailer using Nodemailer to dispatch confirmation receipts upon successful checkouts.
+*   **Automated Email Invoices:** Relies on a transactional mailer using Nodemailer to dispatch confirmation receipts and invoice details upon successful checkouts.
 *   **Seeding & DB Automations:** Complete database migration paths and automated catalogs seeding to bootstrap the product library immediately.
 
 ---
