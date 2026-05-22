@@ -138,8 +138,6 @@ const Login = () => {
           <span className="auth-logo-tld">.in</span>
         </Link>
       </header>
-
-      {/* Main Alert Banners */}
       {error && (
         <div className="auth-alert auth-alert-error" role="alert">
           <div className="auth-alert-icon">
@@ -163,14 +161,11 @@ const Login = () => {
           </div>
         </div>
       )}
-
-      {/* Auth Card Box */}
       <main className="auth-card">
         {mode === "signin" ? (
           <div className="auth-card-body">
             <h1 className="auth-card-title">Sign in</h1>
             <form onSubmit={handleSignIn} noValidate>
-              {/* Email field */}
               <div className={`auth-form-group ${fieldErrors.email ? "has-error" : ""}`}>
                 <label htmlFor="signin-email">Email</label>
                 <input
@@ -187,8 +182,6 @@ const Login = () => {
                   </span>
                 )}
               </div>
-
-              {/* Password field */}
               <div className={`auth-form-group ${fieldErrors.password ? "has-error" : ""}`}>
                 <label htmlFor="signin-password">Password</label>
                 <input
@@ -205,8 +198,6 @@ const Login = () => {
                   </span>
                 )}
               </div>
-
-              {/* Golden Submit Button */}
               <button
                 type="submit"
                 className="auth-primary-btn"
@@ -234,7 +225,6 @@ const Login = () => {
           <div className="auth-card-body">
             <h1 className="auth-card-title">Create Account</h1>
             <form onSubmit={handleRegister} noValidate>
-              {/* Name field */}
               <div className={`auth-form-group ${fieldErrors.name ? "has-error" : ""}`}>
                 <label htmlFor="reg-name">Your name</label>
                 <input
@@ -252,8 +242,6 @@ const Login = () => {
                   </span>
                 )}
               </div>
-
-              {/* Email field */}
               <div className={`auth-form-group ${fieldErrors.email ? "has-error" : ""}`}>
                 <label htmlFor="reg-email">Email</label>
                 <input
@@ -270,8 +258,6 @@ const Login = () => {
                   </span>
                 )}
               </div>
-
-              {/* Password field */}
               <div className={`auth-form-group ${fieldErrors.password ? "has-error" : ""}`}>
                 <label htmlFor="reg-password">Password</label>
                 <input
@@ -289,8 +275,6 @@ const Login = () => {
                   </span>
                 )}
               </div>
-
-              {/* Confirm Password field */}
               <div className={`auth-form-group ${fieldErrors.confirmPassword ? "has-error" : ""}`}>
                 <label htmlFor="reg-confirm-password">Re-enter password</label>
                 <input
@@ -307,8 +291,6 @@ const Login = () => {
                   </span>
                 )}
               </div>
-
-              {/* Golden Submit Button */}
               <button
                 type="submit"
                 className="auth-primary-btn"
@@ -339,8 +321,6 @@ const Login = () => {
           </div>
         )}
       </main>
-
-      {/* Mode Switcher Footer for Sign In page */}
       {mode === "signin" && (
         <div className="auth-new-to-amazon">
           <div className="new-to-amazon-divider">
@@ -356,8 +336,6 @@ const Login = () => {
           </button>
         </div>
       )}
-
-      {/* Main Footer Links */}
       <footer className="auth-footer">
         <div className="auth-footer-divider"></div>
         <div className="auth-footer-links">

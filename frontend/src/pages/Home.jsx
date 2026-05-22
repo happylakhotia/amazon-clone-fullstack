@@ -14,7 +14,6 @@ import {
 } from "react-icons/md";
 import "./Home.css";
 
-// Banner data
 const banners = [
   {
     id: 1,
@@ -46,12 +45,12 @@ const banners = [
 ];
 
 const categoryIcons = {
-  Electronics:      { icon: MdLaptopMac,        color: "#0f3460", bg: "#e8f0fe" },
-  Clothing:         { icon: MdCheckroom,         color: "#7b2d8e", bg: "#f3e5f5" },
-  Books:            { icon: MdMenuBook,          color: "#c45500", bg: "#fff3e0" },
-  "Home & Kitchen": { icon: MdWeekend,           color: "#1b7742", bg: "#e6f4ea" },
-  Sports:           { icon: MdSportsBasketball,  color: "#c62828", bg: "#fce4ec" },
-  Toys:             { icon: MdExtension,         color: "#1565c0", bg: "#e3f2fd" },
+  Electronics: { icon: MdLaptopMac, color: "#0f3460", bg: "#e8f0fe" },
+  Clothing: { icon: MdCheckroom, color: "#7b2d8e", bg: "#f3e5f5" },
+  Books: { icon: MdMenuBook, color: "#c45500", bg: "#fff3e0" },
+  "Home & Kitchen": { icon: MdWeekend, color: "#1b7742", bg: "#e6f4ea" },
+  Sports: { icon: MdSportsBasketball, color: "#c62828", bg: "#fce4ec" },
+  Toys: { icon: MdExtension, color: "#1565c0", bg: "#e3f2fd" },
 };
 
 const HeroBanner = ({ onCategoryChange }) => {
@@ -89,8 +88,6 @@ const HeroBanner = ({ onCategoryChange }) => {
           />
         </div>
       </div>
-
-      {/* Dots */}
       <div className="hero-dots">
         {banners.map((_, i) => (
           <button
@@ -110,7 +107,6 @@ const Home = () => {
   const { filteredProducts, loading, handleSearch, handleCategoryChange, selectedCategory, clearFilters } =
     useProducts();
 
-  // Sync URL params → context
   useEffect(() => {
     const q = searchParams.get("q") || "";
     const cat = searchParams.get("cat") || "All";
@@ -130,12 +126,10 @@ const Home = () => {
 
   return (
     <div className="home-page">
-      {/* Hero Banner - only show when not filtered */}
       {!isFiltered && (
         <>
           <HeroBanner onCategoryChange={changeCategory} />
 
-          {/* Category Quick Links */}
           <section className="category-quick-links" aria-label="Shop by category">
             <div className="container">
               <h2 className="section-title">Shop by Category</h2>
@@ -165,9 +159,7 @@ const Home = () => {
         </>
       )}
 
-      {/* Main Content: Filter + Products */}
       <section className="home-main container">
-        {/* Active filters banner */}
         {isFiltered && (
           <div className="filter-banner">
             <p>

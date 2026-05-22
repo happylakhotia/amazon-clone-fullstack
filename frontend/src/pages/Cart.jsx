@@ -25,7 +25,6 @@ const Cart = () => {
           </div>
         ) : (
           <div className="cart-layout">
-            {/* Cart Items */}
             <div className="cart-items-col">
               <div className="cart-items-card">
                 <div className="cart-header">
@@ -56,8 +55,6 @@ const Cart = () => {
                 </div>
               </div>
             </div>
-
-            {/* Cart Summary */}
             <div className="cart-summary-col">
               <CartSummary />
             </div>

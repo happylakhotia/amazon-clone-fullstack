@@ -4,7 +4,7 @@ A high-performance, feature-rich, and visually stunning e-commerce clone built u
 
 ---
 
-## Key Features
+## Key Features Implemented 
 
 *   **Seamless User Experience:** Replicates the iconic Amazon branding with custom Vanilla CSS layout grids, sliders, product carousels, responsive sidebars, and fluid interactive feedback.
 *   **Product Listing Page:** Displays products in a responsive grid layout matching Amazon's design, featuring product cards (with Image, Name, Price, and Add to Cart buttons), instant search functionality by name, and category filtering.

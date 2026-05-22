@@ -35,7 +35,6 @@ const Checkout = () => {
   const [address, setAddress] = useState({});
   const [errors, setErrors] = useState({});
 
-  // Stripe Payment Gateway States
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
   const [paymentIntent, setPaymentIntent] = useState(null);
   const [isPaymentLoading, setIsPaymentLoading] = useState(false);
@@ -69,7 +68,6 @@ const Checkout = () => {
     };
     loadProfile();
 
-    // Fetch stripe config publishable key dynamically
     const fetchConfig = async () => {
       try {
         const res = await fetch(`${import.meta.env.VITE_API_URL || "http://localhost:5000/api"}/payments/config`);
@@ -88,7 +86,6 @@ const Checkout = () => {
     const errs = validateAddress(address);
     if (Object.keys(errs).length > 0) {
       setErrors(errs);
-      // Scroll to first error
       const firstErrorField = document.getElementById(Object.keys(errs)[0]);
       firstErrorField?.scrollIntoView({ behavior: "smooth", block: "center" });
       return;
@@ -101,7 +98,6 @@ const Checkout = () => {
   const handlePlaceOrder = async () => {
     setIsPaymentLoading(true);
     try {
-      // Sync address changes back to database profile
       await updateUserProfile({
         name: `${address.firstName} ${address.lastName}`.trim(),
         phone: address.phone,
@@ -112,7 +108,6 @@ const Checkout = () => {
         zipCode: address.zipCode,
       });
 
-      // Initiate Stripe/Simulated PaymentIntent
       const response = await fetch(
         `${import.meta.env.VITE_API_URL || "http://localhost:5000/api"}/payments/create-intent`,
         {
@@ -161,7 +156,6 @@ const Checkout = () => {
   return (
     <div className="checkout-page">
       <div className="container">
-        {/* Steps indicator */}
         <div className="checkout-steps" aria-label="Checkout progress">
           {STEPS.map((s, i) => (
             <div
@@ -178,9 +172,7 @@ const Checkout = () => {
         </div>
 
         <div className="checkout-layout">
-          {/* Left: Step Content */}
           <div className="checkout-main">
-            {/* Step 0: Shipping */}
             {step === 0 && (
               <div className="checkout-section">
                 <AddressForm
@@ -202,8 +194,6 @@ const Checkout = () => {
                 </div>
               </div>
             )}
-
-            {/* Step 1: Payment */}
             {step === 1 && (
               <div className="checkout-section">
                 <div className="payment-section">
@@ -223,14 +213,10 @@ const Checkout = () => {
                 </div>
               </div>
             )}
-
-            {/* Step 2: Review */}
             {step === 2 && (
               <div className="checkout-section">
                 <div className="review-section">
                   <h2 className="checkout-section-title">Review Your Order</h2>
-
-                  {/* Address summary */}
                   <div className="review-card">
                     <div className="review-card-header">
                       <h3>Shipping Address</h3>
@@ -241,8 +227,6 @@ const Checkout = () => {
                     <p>{address.city}, {address.state} {address.zipCode}</p>
                     <p>{address.phone}</p>
                   </div>
-
-                  {/* Items review */}
                   <div className="review-card">
                     <div className="review-card-header">
                       <h3>Items ({cartItems.length})</h3>
@@ -285,8 +269,6 @@ const Checkout = () => {
               </div>
             )}
           </div>
-
-          {/* Right: Order Summary */}
           <div className="checkout-sidebar">
             <OrderSummary cartItems={cartItems} address={step >= 1 ? address : null} />
           </div>
