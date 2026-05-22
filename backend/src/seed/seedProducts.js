@@ -1,12 +1,10 @@
 import prisma from "../config/prisma.js";
 import products from "../../../frontend/src/data/products.js";
 
-/**
- * Seed product database with the items dataset from the frontend
- */
+// Seed product database with the items dataset from the frontend
 const seed = async () => {
   try {
-    console.log("🚀 Starting database seeding...");
+    console.log("Starting database seeding");
 
     // Seed default user (Happy Lakhotia)
     const defaultUser = await prisma.user.upsert({
@@ -33,11 +31,11 @@ const seed = async () => {
         zipCode: "400001",
       },
     });
-    console.log(`👤 Seeded/Verified default user: ${defaultUser.name}`);
+    console.log(`Seeded/Verified default user: ${defaultUser.name}`);
 
     // Clear active products to allow complete re-seeding
     const deletedCount = await prisma.product.deleteMany({});
-    console.log(`🧹 Cleared ${deletedCount.count} existing products.`);
+    console.log(`Cleared ${deletedCount.count} existing products.`);
 
     // Map and insert items
     let count = 0;
@@ -62,9 +60,9 @@ const seed = async () => {
       count++;
     }
 
-    console.log(`✅ Success! Seeded ${count} products to the cloud database!`);
+    console.log(`Success! Seeded ${count} products to the cloud database!`);
   } catch (error) {
-    console.error("❌ Database seeding failed:", error);
+    console.error("Database seeding failed:", error);
   } finally {
     await prisma.$disconnect();
   }

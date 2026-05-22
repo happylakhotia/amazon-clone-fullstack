@@ -1,15 +1,10 @@
 import stripe from "../config/stripe.js";
 
-/**
- * Create a Stripe PaymentIntent or simulated payment token if keys are absent
- * @param {number} amount - Subtotal + shipping + tax
- * @param {string} currency - currency code (default: inr)
- * @returns {Promise<Object>} paymentIntent details
- */
+// Create a Stripe PaymentIntent or simulated payment token if keys are absent
 export const createPaymentIntent = async (amount, currency = "inr") => {
   if (stripe) {
     try {
-      // Stripe amount must be in the smallest currency unit (e.g. paise for INR)
+      // Stripe amount must be in the smallest currency unit
       const intent = await stripe.paymentIntents.create({
         amount: Math.round(amount * 100),
         currency,

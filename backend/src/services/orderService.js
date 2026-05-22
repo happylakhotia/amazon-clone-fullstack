@@ -1,10 +1,8 @@
 import prisma from "../config/prisma.js";
 import { generateOrderId } from "../utils/generateOrderId.js";
 
-/**
- * Map PostgreSQL nested OrderItem/Product schema to the flat JSON-friendly structure
- * expected by the React frontend (preserving zero-friction compatibility).
- */
+//Map PostgreSQL nested OrderItem/Product schema to the flat JSON-friendly structure
+
 const mapDbOrderToFrontend = (order) => {
   if (!order) return null;
   const { orderItems, ...rest } = order;
@@ -22,11 +20,8 @@ const mapDbOrderToFrontend = (order) => {
   };
 };
 
-/**
- * Place a new customer order (Normalized Relational implementation)
- * @param {Object} orderData - { userId, cartItems, address, totals }
- * @returns {Promise<Object>} order
- */
+//Place a new customer order (Normalized Relational implementation)
+
 export const createOrder = async ({ userId, cartItems, address, totals }) => {
   const orderId = generateOrderId();
   const estimatedDelivery = new Date();
@@ -71,11 +66,7 @@ export const createOrder = async ({ userId, cartItems, address, totals }) => {
   return mapDbOrderToFrontend(order);
 };
 
-/**
- * Fetch a user's past orders sorted by date
- * @param {string} userId 
- * @returns {Promise<Array>} orders
- */
+//Fetch a user's past orders sorted by date
 export const getOrders = async (userId) => {
   const orders = await prisma.order.findMany({
     where: { userId },

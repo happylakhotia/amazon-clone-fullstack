@@ -1,10 +1,7 @@
 import prisma from "../config/prisma.js";
 
-/**
- * Fetch all products with optional search query and category filtering
- * @param {Object} filters - { q, cat }
- * @returns {Promise<Array>} products
- */
+//Fetch all products with optional search query and category filtering
+
 export const getAllProducts = async ({ q = "", cat = "" }) => {
   const where = {};
 
@@ -12,10 +9,9 @@ export const getAllProducts = async ({ q = "", cat = "" }) => {
   if (cat && cat.trim().toLowerCase() !== "all") {
     where.category = {
       equals: cat,
-      mode: "insensitive", // Case-insensitive matching
+      mode: "insensitive",
     };
   }
-
   // Text search query matching either title/name or description
   if (q && q.trim() !== "") {
     where.OR = [
@@ -30,11 +26,7 @@ export const getAllProducts = async ({ q = "", cat = "" }) => {
   });
 };
 
-/**
- * Fetch a single product detail by ID
- * @param {string} id 
- * @returns {Promise<Object|null>} product
- */
+// Fetch a single product detail by ID
 export const getProductById = async (id) => {
   return await prisma.product.findUnique({
     where: { id },

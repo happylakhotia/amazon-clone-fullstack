@@ -2,11 +2,6 @@ import nodemailer from "nodemailer";
 
 let testAccountTransporter = null;
 
-/**
- * Initialize nodemailer transporter.
- * If live SMTP credentials are not present in .env, falls back to a dynamically
- * created Ethereal Mail test transporter, returning a direct preview URL in the console.
- */
 const getTransporter = async () => {
   const host = process.env.SMTP_HOST;
   const port = process.env.SMTP_PORT || 587;
@@ -48,10 +43,7 @@ const getTransporter = async () => {
   }
 };
 
-/**
- * Send a high-fidelity, Amazon-styled HTML Order Confirmation Email.
- * @param {Object} params - { order, user }
- */
+
 export const sendOrderConfirmationEmail = async ({ order, user }) => {
   try {
     const transporter = await getTransporter();
@@ -217,10 +209,8 @@ export const sendOrderConfirmationEmail = async ({ order, user }) => {
     // If using ethereal test credentials, log the direct link where the developer can inspect the receipt
     const previewUrl = nodemailer.getTestMessageUrl(info);
     if (previewUrl) {
-      console.log(`\n=============================================================`);
-      console.log(`✉️  [MAIL PREVIEW] Order receipt email ready to view!`);
-      console.log(`🔗  Click here to inspect the HTML receipt: ${previewUrl}`);
-      console.log(`=============================================================\n`);
+      console.log(`MAIL PREVIEW Order receipt email ready to view!`);
+      console.log(`Click here to inspect the HTML receipt: ${previewUrl}`);
     }
 
   } catch (error) {

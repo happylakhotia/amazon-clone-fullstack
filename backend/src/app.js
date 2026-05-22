@@ -27,7 +27,7 @@ app.use(
         "http://localhost:5174",
         "http://localhost:3000",
       ];
-      // Allow all Vercel preview/production deployments and requests with no origin (e.g. curl, Postman)
+      // Allow all Vercel preview/production deployments and requests with no origin 
       if (!origin || allowedOrigins.includes(origin) || origin.endsWith(".vercel.app")) {
         callback(null, true);
       } else {

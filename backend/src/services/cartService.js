@@ -1,10 +1,6 @@
 import prisma from "../config/prisma.js";
 
-/**
- * Load cart items with their product details for a given user
- * @param {string} userId 
- * @returns {Promise<Array>} cartItems list with joined product objects
- */
+//Load cart items with their product details for a given user
 export const getCart = async (userId) => {
   const cartItems = await prisma.cartItem.findMany({
     where: { userId },
@@ -39,12 +35,7 @@ export const getCart = async (userId) => {
   });
 };
 
-/**
- * Add a product to a user's cart
- * @param {string} userId 
- * @param {string} productId 
- * @returns {Promise<Object>} cartItem
- */
+//Add a product to a user's cart
 export const addToCart = async (userId, productId) => {
   const existing = await prisma.cartItem.findFirst({
     where: { userId, productId },
@@ -66,13 +57,7 @@ export const addToCart = async (userId, productId) => {
   });
 };
 
-/**
- * Update the quantity of a cart item
- * @param {string} userId 
- * @param {string} productId 
- * @param {number} quantity 
- * @returns {Promise<Object>} cartItem
- */
+// Update the quantity of a cart item
 export const updateQuantity = async (userId, productId, quantity) => {
   const existing = await prisma.cartItem.findFirst({
     where: { userId, productId },
@@ -88,12 +73,7 @@ export const updateQuantity = async (userId, productId, quantity) => {
   });
 };
 
-/**
- * Delete a product from the user's cart
- * @param {string} userId 
- * @param {string} productId 
- * @returns {Promise<Object>} deletedItem
- */
+// Delete a product from the user's cart
 export const removeFromCart = async (userId, productId) => {
   const existing = await prisma.cartItem.findFirst({
     where: { userId, productId },
@@ -108,11 +88,7 @@ export const removeFromCart = async (userId, productId) => {
   });
 };
 
-/**
- * Clear all cart items for a user
- * @param {string} userId 
- * @returns {Promise<Object>} deleteManySummary
- */
+// Clear all cart items for a user
 export const clearCart = async (userId) => {
   return await prisma.cartItem.deleteMany({
     where: { userId },

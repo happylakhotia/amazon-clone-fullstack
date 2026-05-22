@@ -1,11 +1,7 @@
 import prisma from "../config/prisma.js";
 import { DEFAULT_USER_ID } from "../utils/constants.js";
 
-/**
- * Retrieve user by ID, with a safe fallback to auto-create the default mock user
- * @param {string} id 
- * @returns {Promise<Object>} user
- */
+//Retrieve user by ID, with a safe fallback to auto-create the default mock user
 export const getUserById = async (id) => {
   let user = await prisma.user.findUnique({
     where: { id },
@@ -32,17 +28,9 @@ export const getUserById = async (id) => {
   return user;
 };
 
-/**
- * Update user profile address and details
- * @param {string} id 
- * @param {Object} profileData 
- * @returns {Promise<Object>} updatedUser
- */
+// Update user profile address and details
 export const updateUserProfile = async (id, profileData) => {
-  // Ensure the user record exists first
   await getUserById(id);
-
-  // Extract name parts or full name if provided
   let fullName = profileData.name;
   if (!fullName && profileData.firstName) {
     fullName = `${profileData.firstName} ${profileData.lastName || ""}`.trim();
@@ -63,11 +51,7 @@ export const updateUserProfile = async (id, profileData) => {
   });
 };
 
-/**
- * Register a new user in database
- * @param {Object} userData - { name, email, password }
- * @returns {Promise<Object>} user
- */
+// Register a new user in database
 export const registerUser = async ({ name, email, password }) => {
   if (!name?.trim() || !email?.trim() || !password?.trim()) {
     throw new Error("All fields are required");
@@ -92,7 +76,7 @@ export const registerUser = async ({ name, email, password }) => {
       id: newUserId,
       name: name.trim(),
       email: normalizedEmail,
-      password: password.trim(), // Storing plain text password for this e-commerce mock demo
+      password: password.trim(),
       phone: "",
       address: "",
       apartment: "",
@@ -103,16 +87,11 @@ export const registerUser = async ({ name, email, password }) => {
   });
 };
 
-/**
- * Login a user by validating their email and password
- * @param {Object} credentials - { email, password }
- * @returns {Promise<Object>} user
- */
+// Login a user by validating their email and password
 export const loginUser = async ({ email, password }) => {
   if (!email?.trim() || !password?.trim()) {
     throw new Error("Email and password are required");
   }
-
   const normalizedEmail = email.toLowerCase().trim();
 
   const user = await prisma.user.findUnique({
