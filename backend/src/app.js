@@ -18,14 +18,22 @@ dotenv.config();
 
 const app = express();
 
-// Set up CORS with support for frontend dev ports
+// Set up CORS with support for frontend dev ports and Vercel deployment
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "http://localhost:5174",
-      "http://localhost:3000",
-    ],
+    origin: (origin, callback) => {
+      const allowedOrigins = [
+        "http://localhost:5173",
+        "http://localhost:5174",
+        "http://localhost:3000",
+      ];
+      // Allow all Vercel preview/production deployments and requests with no origin (e.g. curl, Postman)
+      if (!origin || allowedOrigins.includes(origin) || origin.endsWith(".vercel.app")) {
+        callback(null, true);
+      } else {
+        callback(new Error("CORS policy: Origin not allowed"));
+      }
+    },
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization", "x-user-id"],
     credentials: true,
