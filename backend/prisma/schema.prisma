@@ -1,0 +1,88 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Product {
+  id             String      @id
+  name           String
+  category       String
+  price          Float
+  originalPrice  Float
+  rating         Float
+  reviewCount    Int
+  stock          Int
+  images         Json        // Array of image URLs
+  description    String
+  specifications Json        // Key-value specifications map
+  soldBy         String
+  badge          String?
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+  cartItems      CartItem[]
+  orderItems     OrderItem[]
+}
+
+model CartItem {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  quantity  Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Order {
+  id                String      @id
+  userId            String
+  user              User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  firstName         String
+  lastName          String
+  address           String      // Flat, house, building
+  apartment         String?     // Colony, street, sector
+  city              String
+  state             String
+  zipCode           String      // PIN Code
+  phone             String
+  subtotal          Float
+  tax               Float
+  shipping          Float
+  total             Float
+  status            String      @default("Order Placed")
+  placedAt          DateTime    @default(now())
+  estimatedDelivery DateTime
+  orderItems        OrderItem[]
+}
+
+model OrderItem {
+  id        String  @id @default(uuid())
+  orderId   String
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  quantity  Int
+  price     Float   // Snapshot price at order time
+}
+
+model User {
+  id        String     @id
+  name      String
+  email     String     @unique
+  password  String?    // Secure password (optional for compatibility with default guest user)
+  phone     String?
+  address   String?
+  apartment String?
+  city      String?
+  state     String?
+  zipCode   String?
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  cartItems CartItem[]
+  orders    Order[]
+}
