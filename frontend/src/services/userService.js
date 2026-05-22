@@ -2,9 +2,6 @@ const PROFILE_KEY = "amazon_user_profile";
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
 const DEFAULT_USER_ID = "user-001";
 
-/**
- * Retrieve the currently logged in custom user ID, or fallback to the pre-seeded "user-001"
- */
 const getActiveUserId = () => {
   try {
     const saved = localStorage.getItem("amazon_user");
@@ -12,7 +9,7 @@ const getActiveUserId = () => {
       const parsed = JSON.parse(saved);
       if (parsed?.id) return parsed.id;
     }
-  } catch {}
+  } catch { }
   return DEFAULT_USER_ID;
 };
 
@@ -21,23 +18,19 @@ const getHeaders = () => ({
   "x-user-id": getActiveUserId(),
 });
 
-// A safe fallback profile matching standard Indian demographics
+// A safe fallback profile 
 const STATIC_FALLBACK_USER = {
   id: DEFAULT_USER_ID,
   name: "Happy Lakhotia",
   email: "happy.lakhotia@example.in",
   phone: "9876543210",
-  address: "Flat 101, A-Wing, Royal Residency",
-  apartment: "Bandra West, Near Metro Station",
-  city: "Mumbai",
-  state: "Maharashtra",
-  zipCode: "400001",
+  address: "IIIT KOTA, Ranpur",
+  apartment: "Block-B Hostel-3",
+  city: "Kota",
+  state: "Rajasthan",
+  zipCode: "325003",
 };
 
-/**
- * Fetch default user profile details from the database API
- * Falls back to localStorage and static profile if backend is offline.
- */
 export const getUserProfile = async () => {
   try {
     const response = await fetch(`${API_URL}/users/profile`, {
@@ -56,9 +49,6 @@ export const getUserProfile = async () => {
   }
 };
 
-/**
- * Update default user profile details in both database API and local storage
- */
 export const updateUserProfile = async (profileData) => {
   try {
     localStorage.setItem(PROFILE_KEY, JSON.stringify(profileData));
@@ -80,9 +70,7 @@ export const updateUserProfile = async (profileData) => {
   }
 };
 
-/**
- * Log in a custom user profile
- */
+
 export const loginUser = async (email, password) => {
   const response = await fetch(`${API_URL}/users/login`, {
     method: "POST",
@@ -100,9 +88,7 @@ export const loginUser = async (email, password) => {
   return user;
 };
 
-/**
- * Register a new custom user profile
- */
+
 export const registerUser = async (name, email, password) => {
   const response = await fetch(`${API_URL}/users/register`, {
     method: "POST",
@@ -120,9 +106,6 @@ export const registerUser = async (name, email, password) => {
   return user;
 };
 
-/**
- * Sign out and switch back to pre-seeded default profile (Happy Lakhotia)
- */
 export const logoutUser = () => {
   try {
     localStorage.removeItem("amazon_user");

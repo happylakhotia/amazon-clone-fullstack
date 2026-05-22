@@ -1,8 +1,5 @@
-/**
- * Format a number as INR currency
- * @param {number} amount
- * @returns {string} e.g. "₹1,29,999.00"
- */
+// Format a number as INR currency
+
 export const formatCurrency = (amount) => {
   if (amount === undefined || amount === null) return "₹0.00";
   return new Intl.NumberFormat("en-IN", {
@@ -13,12 +10,8 @@ export const formatCurrency = (amount) => {
   }).format(amount);
 };
 
-/**
- * Format a discount percentage
- * @param {number} original
- * @param {number} sale
- * @returns {string} e.g. "(-20%)"
- */
+// Format a discount percentage
+
 export const formatDiscount = (original, sale) => {
   if (!original || original <= sale) return null;
   const pct = Math.round(((original - sale) / original) * 100);

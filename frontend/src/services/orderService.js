@@ -8,8 +8,8 @@ const getActiveUserId = () => {
       const parsed = JSON.parse(saved);
       if (parsed?.id) return parsed.id;
     }
-  } catch {}
-  return "user-001"; // Fallback to default user Happy Lakhotia
+  } catch { }
+  return "user-001";
 };
 
 const getHeaders = () => ({
@@ -17,9 +17,8 @@ const getHeaders = () => ({
   "x-user-id": getActiveUserId(),
 });
 
-/**
- * Format flat database order record to the nested format expected by React components
- */
+//Format flat database order record to the nested format expected by React components
+
 const formatDbOrder = (order) => {
   if (!order) return null;
   return {
@@ -47,9 +46,6 @@ const formatDbOrder = (order) => {
   };
 };
 
-/**
- * Place a new order on the backend database
- */
 export const placeOrder = async ({ address, cartItems, totals }) => {
   try {
     const response = await fetch(`${API_URL}/orders`, {
@@ -84,9 +80,6 @@ export const placeOrder = async ({ address, cartItems, totals }) => {
   }
 };
 
-/**
- * Load all orders from the database
- */
 export const loadOrders = async () => {
   try {
     const response = await fetch(`${API_URL}/orders`, {
@@ -102,9 +95,6 @@ export const loadOrders = async () => {
   }
 };
 
-/**
- * Helper to fetch offline backup orders
- */
 const getOfflineOrders = () => {
   try {
     const data = localStorage.getItem(ORDERS_KEY);
@@ -114,9 +104,6 @@ const getOfflineOrders = () => {
   }
 };
 
-/**
- * Compatibility exports to prevent build breakage during refactor
- */
 export const saveOrder = (order) => {
   try {
     const orders = getOfflineOrders();

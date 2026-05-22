@@ -9,8 +9,8 @@ const getActiveUserId = () => {
       const parsed = JSON.parse(saved);
       if (parsed?.id) return parsed.id;
     }
-  } catch {}
-  return "user-001"; // Fallback to default user Happy Lakhotia
+  } catch { }
+  return "user-001";
 };
 
 const getHeaders = () => ({
@@ -18,9 +18,7 @@ const getHeaders = () => ({
   "x-user-id": getActiveUserId(),
 });
 
-/**
- * Fetch cart items from Express DB API
- */
+
 export const loadCart = async () => {
   try {
     const response = await fetch(`${API_URL}/cart`, {
@@ -39,9 +37,6 @@ export const loadCart = async () => {
   }
 };
 
-/**
- * Persist cart items to localStorage as redundancy fallback
- */
 export const saveCartOffline = (cartItems) => {
   try {
     localStorage.setItem(CART_KEY, JSON.stringify(cartItems));
@@ -50,9 +45,6 @@ export const saveCartOffline = (cartItems) => {
   }
 };
 
-/**
- * DB API: Add item to backend database
- */
 export const addToCart = async (productId) => {
   try {
     const response = await fetch(`${API_URL}/cart`, {
@@ -68,9 +60,6 @@ export const addToCart = async (productId) => {
   }
 };
 
-/**
- * DB API: Update item quantity in database
- */
 export const updateQuantity = async (productId, quantity) => {
   try {
     const response = await fetch(`${API_URL}/cart`, {
@@ -86,9 +75,6 @@ export const updateQuantity = async (productId, quantity) => {
   }
 };
 
-/**
- * DB API: Delete item from database
- */
 export const removeFromCart = async (productId) => {
   try {
     const response = await fetch(`${API_URL}/cart/${productId}`, {
@@ -103,9 +89,6 @@ export const removeFromCart = async (productId) => {
   }
 };
 
-/**
- * DB API: Clear all items from database cart
- */
 export const clearCart = async () => {
   try {
     const response = await fetch(`${API_URL}/cart`, {
@@ -120,9 +103,6 @@ export const clearCart = async () => {
   }
 };
 
-/**
- * Wishlist handlers (remains client-only localStorage for lightweight operations)
- */
 export const loadWishlist = () => {
   try {
     const data = localStorage.getItem(WISHLIST_KEY);
