@@ -60,8 +60,13 @@ export const sendOrderConfirmationEmail = async ({ order, user }) => {
       return;
     }
 
-    const emailTo = user.email || "happy.lakhotia@example.in";
+    const emailTo = user.email;
+    if (!emailTo) {
+      console.warn("No email address found for user, skipping confirmation email.");
+      return;
+    }
     const fromAddress = process.env.EMAIL_FROM || '"Amazon Clone Support" <no-reply@amazon-clone.demo>';
+    console.log(`Sending order confirmation email to: ${emailTo}`);
 
     // Build items list HTML
     const itemsHtml = order.items.map((item) => {
