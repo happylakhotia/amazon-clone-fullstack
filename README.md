@@ -9,6 +9,8 @@ A high-performance, feature-rich, and visually stunning e-commerce clone built u
 *   **✨ Seamless User Experience:** Replicates the iconic Amazon branding with custom Vanilla CSS layout grids, sliders, product carousels, responsive sidebars, and fluid interactive feedback.
 *   **🔐 Authentication System:** Secure custom sign-in and sign-up flows, along with support for guest profiles for hassle-free browsing.
 *   **🛒 Interactive Cart & Wishlist:** Real-time updates for cart quantities, dynamic subtotal, tax and shipping calculations, and a dedicated wishlist to save items for later.
+*   **📖 Dynamic Pagination:** Custom offset-based pagination displaying 10 products per page with a smooth 80ms staggered card-loading animation.
+*   **🖼️ Optimized Performance & Lazy Loading:** Implemented native image lazy loading to improve page load performance and reduce bandwidth usage across all product lists and image sliders.
 *   **💳 Stripe Payments Integration:** Full secure checkout experience using the Stripe API, handling live payment processing with automatic server-side validation.
 *   **📦 Order History & Tracking:** Post-purchase dashboards displaying past orders, order state tracking, estimated delivery dates, and precise item price snapshots.
 *   **📧 Automated Email Invoices:** Relies on a transactional mailer using Nodemailer to dispatch confirmation receipts upon successful checkouts.
