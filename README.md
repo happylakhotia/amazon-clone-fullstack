@@ -27,14 +27,14 @@ A high-performance, feature-rich, and visually stunning e-commerce clone built u
 | :--- | :--- |
 | **Frontend** | React (Vite), React Router DOM, React Icons, Custom Vanilla CSS |
 | **Backend** | Express.js, Node.js, Cors, Dotenv |
-| **Database & ORM** | PostgreSQL, Prisma ORM (Prisma Client & Migrate) |
+| **Database & ORM** | Neon Serverless PostgreSQL, Prisma ORM (Prisma Client & Migrate) |
 | **Integrations** | Stripe SDK (Payments), Nodemailer (Email Alerts) |
 
 ---
 
 ## Database Architecture
 
-The relational schema is mapped via **Prisma ORM** using a PostgreSQL database. Below are the core entities:
+The relational schema is mapped via **Prisma ORM** using a **Neon serverless PostgreSQL** database. Below are the core entities:
 
 ```mermaid
 erDiagram
@@ -114,7 +114,7 @@ erDiagram
 ### 1. Prerequisites
 Make sure you have the following installed on your machine:
 *   [Node.js](https://nodejs.org/) (v16+)
-*   [PostgreSQL](https://www.postgresql.org/) database server
+*   [Neon Database Account](https://neon.tech/) (or a local [PostgreSQL](https://www.postgresql.org/) database server)
 *   [Stripe Account](https://stripe.com/) (to acquire Stripe API keys)
 
 ---
@@ -130,7 +130,7 @@ Make sure you have the following installed on your machine:
    ```
 3. Create a `.env` file in the `backend/` root directory and populate it with your environment variables:
    ```env
-   DATABASE_URL="postgresql://username:password@localhost:5432/amazon_clone?schema=public"
+   DATABASE_URL="postgresql://neondb_owner:<password>@ep-XXXXXX.aws.neon.tech/neondb?sslmode=require"
    STRIPE_PUBLISHABLE_KEY="your_stripe_publishable_key"
    EMAIL_USER="your_email@gmail.com"
    EMAIL_PASS="your_email_app_password"
